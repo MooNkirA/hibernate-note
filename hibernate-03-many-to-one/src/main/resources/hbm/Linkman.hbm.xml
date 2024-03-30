@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <!-- 配置表与实体类的关系 -->
+    <class name="com.moon.hibernate.entity.Linkman" table="cst_linkman">
+        <!-- 配置实体类id和表id对应 -->
+        <id name="lkmId" column="lkm_id">
+            <generator class="identity"></generator>
+        </id>
+        <!-- 配置实体类成员变量与表字段对应 -->
+        <property name="lkmName" column="lkm_name"></property>
+        <property name="lkmCustid" column="lkm_cust_id"></property>
+        <property name="lkmGender" column="lkm_gender"></property>
+        <property name="lkmPhone" column="lkm_phone"></property>
+        <property name="lkmMobile" column="lkm_mobile"></property>
+        <property name="lkmEmail" column="lkm_email"></property>
+        <property name="lkmQq" column="lkm_qq"></property>
+        <property name="lkmPosition" column="lkm_position"></property>
+        <property name="lkmMemo" column="lkm_memo"></property>
+
+        <!--
+            配置多对一关系
+            many-to-one:用于只能多对一的关系
+            name：指定多对一的属性名，引用的属性名
+            column：对于关联外键的字段lkm_cust_id
+         -->
+        <many-to-one name="customer" column="lkm_cust_id" insert="false" update="false"></many-to-one>
+    </class>
+</hibernate-mapping>
